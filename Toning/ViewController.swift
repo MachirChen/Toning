@@ -10,7 +10,6 @@ import UIKit
 class ViewController: UIViewController {
 
     @IBOutlet weak var imageView: UIImageView!
-    @IBOutlet weak var backgroundView: UIImageView!
     @IBOutlet weak var gradientView: UIView!
     @IBOutlet weak var shadowView: UIView!
     @IBOutlet weak var redSwitch: UISwitch!
@@ -88,8 +87,6 @@ class ViewController: UIViewController {
     }
     
     @IBAction func changeRadiusSlider(_ sender: UISlider) {
-        backgroundView.clipsToBounds = true
-        backgroundView.layer.cornerRadius = CGFloat(radiusSlider.value)
         imageView.clipsToBounds = true
         imageView.layer.cornerRadius = CGFloat(radiusSlider.value)
         shadowView.layer.cornerRadius = CGFloat(radiusSlider.value)
@@ -98,12 +95,13 @@ class ViewController: UIViewController {
     
     @IBAction func changeGradientSlider(_ sender: UISlider) {
         let gradientLayer = CAGradientLayer()
-        let locationTao = round(15*gradientSlider.value)/15
+        let locationTop = round(30*gradientSlider.value)/30
         
         gradientLayer.colors = [UIColor.orange.cgColor, UIColor.yellow.cgColor]
         gradientLayer.frame = gradientView.bounds
-        gradientLayer.locations = [0.0, NSNumber(value: locationTao)]
+        gradientLayer.locations = [0.0, NSNumber(value: locationTop)]
         gradientView.layer.addSublayer(gradientLayer)
+        gradientView.clipsToBounds = true
     }
     
     @IBAction func changeShadowSlider(_ sender: UISlider) {
