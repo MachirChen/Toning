@@ -105,9 +105,8 @@ class ViewController: UIViewController {
     }
     
     @IBAction func changeShadowSlider(_ sender: UISlider) {
-        shadowView.layer.masksToBounds = false
         shadowView.layer.shadowColor = UIColor.darkGray.cgColor
-        shadowView.layer.shadowOffset = CGSize(width: 1, height: 1)
+        shadowView.layer.shadowOffset = CGSize(width: 10, height: 10)
         shadowView.layer.shadowOpacity = 0.8
         shadowView.layer.shadowRadius = CGFloat(shadowSlider.value)
     }
